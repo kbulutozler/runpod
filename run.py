@@ -6,7 +6,7 @@ from transformers import AutoTokenizer
 
 tokenizer = AutoTokenizer.from_pretrained("distilbert-base-uncased")
 
-
+### added as tracing
 def preprocess_function(examples):
     return tokenizer(examples["text"], truncation=True)
 
@@ -42,9 +42,9 @@ model = AutoModelForSequenceClassification.from_pretrained(
 training_args = TrainingArguments(
     output_dir="my_awesome_model2",
     learning_rate=2e-5,
-    per_device_train_batch_size=64,
-    per_device_eval_batch_size=64,
-    num_train_epochs=2,
+    per_device_train_batch_size=4,
+    per_device_eval_batch_size=4,
+    num_train_epochs=1,
     weight_decay=0.01,
     evaluation_strategy="epoch",
     save_strategy="epoch",
